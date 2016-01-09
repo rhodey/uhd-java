@@ -7,7 +7,8 @@ via [JavaCPP](https://github.com/bytedeco/javacpp).
 Install UHD and the UHD development files on your system, for debian
 these can be found in the `uhd-host` and `libuhd-dev` packages. Check
 out [this guide](http://code.ettus.com/redmine/ettus/projects/uhd/wiki#Installation-Instructions)
-for detailed install instructions.
+for detailed install instructions. You may also need to install the
+`build-essential` & `libboost-dev` packages.
 
 ## Verify UHD
 Connect your USRP hardware and run `$ uhd_find_devices`, **you must
