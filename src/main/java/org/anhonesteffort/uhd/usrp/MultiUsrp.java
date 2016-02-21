@@ -62,8 +62,9 @@ public class MultiUsrp extends Pointer {
     return multiUsrp;
   }
 
-
   public native double get_master_clock_rate(@Cast("size_t") long mboard);
+  public native void set_master_clock_rate(double rate, @Cast("size_t") long mboard);
+  public void set_master_clock_rate(double rate) { set_master_clock_rate(rate, ALL_MBOARDS); }
 
   public native long get_num_mboards();
   public native @StdString String get_mboard_name(@Cast("size_t") long mboard);

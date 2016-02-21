@@ -69,11 +69,12 @@ public class MultiUsrpTest {
   }
 
   @Test
-  public void testGetMasterClock() {
+  public void testGetSetMasterClock() {
     final DeviceAddress ADDRESS = new DeviceAddress(DEVICE_ARGS);
     final MultiUsrp     USRP    = MultiUsrp.build(ADDRESS);
 
     assert USRP.get_master_clock_rate(0) > 0;
+    USRP.set_master_clock_rate(USRP.get_master_clock_rate(0));
   }
 
   @Test
