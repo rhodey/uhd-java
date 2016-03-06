@@ -33,6 +33,11 @@ import org.bytedeco.javacpp.annotation.Platform;
 @Name("uhd::device")
 public class Device extends Pointer {
 
+  public static final int
+      FILTER_ANY   = 0x00,
+      FILTER_USRP  = 0x01,
+      FILTER_CLOCK = 0x02;
+
   static { Loader.load(); }
 
   private DeviceSharedPtr ptr;
@@ -41,9 +46,9 @@ public class Device extends Pointer {
   }
 
   public native static @ByVal DeviceAddresses find(@ByRef DeviceAddress hint);
-  private native static @ByVal DeviceSharedPtr make(@ByRef DeviceAddress hint, @Cast("size_t") long which);
-  public static Device build(DeviceAddress hint, long which) {
-    DeviceSharedPtr ptr    = make(hint, which);
+  private native static @ByVal DeviceSharedPtr make(@ByRef DeviceAddress hint, @Cast("uhd::device::device_filter_t") int filter, @Cast("size_t") long which);
+  public static Device build(DeviceAddress hint, int filter, long which) {
+    DeviceSharedPtr ptr    = make(hint, filter, which);
     Device          device = ptr.get();
 
     device.saveReference(ptr);

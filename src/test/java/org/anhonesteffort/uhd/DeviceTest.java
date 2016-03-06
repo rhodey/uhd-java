@@ -52,7 +52,7 @@ public class DeviceTest {
   @Test
   public void testMake() {
     final DeviceAddress ADDRESS = new DeviceAddress(DEVICE_ARGS);
-    final Device        DEVICE  = Device.build(ADDRESS, 0);
+    final Device        DEVICE  = Device.build(ADDRESS, Device.FILTER_USRP, 0);
 
     assert DEVICE != null;
   }
@@ -63,7 +63,7 @@ public class DeviceTest {
 
     try {
 
-      Device.build(ADDRESS, 0);
+      Device.build(ADDRESS, Device.FILTER_USRP, 0);
       assert false;
 
     } catch (RuntimeException e) {
