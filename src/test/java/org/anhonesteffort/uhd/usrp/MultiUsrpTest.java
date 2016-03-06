@@ -86,8 +86,10 @@ public class MultiUsrpTest {
     assert SOURCES.size() > 0;
 
     for (long i = 0; i < SOURCES.size(); i++) {
-      USRP.set_clock_source(SOURCES.get(i), 0);
-      assert USRP.get_clock_source(0).equals(SOURCES.get(i));
+      if (!SOURCES.get(i).equals("gpsdo")) {
+        USRP.set_clock_source(SOURCES.get(i), 0);
+        assert USRP.get_clock_source(0).equals(SOURCES.get(i));
+      }
     }
   }
 
