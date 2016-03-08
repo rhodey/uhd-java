@@ -18,6 +18,7 @@ package org.anhonesteffort.uhd.usrp;
 
 import org.anhonesteffort.uhd.RxStreamer;
 import org.anhonesteffort.uhd.StreamArgs;
+import org.anhonesteffort.uhd.types.MetaRange;
 import org.anhonesteffort.uhd.types.StreamCommand;
 import org.anhonesteffort.uhd.types.TuneRequest;
 import org.anhonesteffort.uhd.RxStreamerSharedPtr;
@@ -81,6 +82,8 @@ public class MultiUsrp extends Pointer {
   public native void set_rx_rate(double rate, @Cast("size_t") long chan);
   public void set_rx_rate(double rate) { set_rx_rate(rate, ALL_CHANS); }
   public native double get_rx_rate(@Cast("size_t") long chan);
+
+  public native @ByVal MetaRange get_rx_rates(@Cast("size_t") long chan);
 
   public native @ByVal TuneResult set_rx_freq(@ByRef TuneRequest tuneRequest, @Cast("size_t") long chan);
   public native double get_rx_freq(@Cast("size_t") long chan);

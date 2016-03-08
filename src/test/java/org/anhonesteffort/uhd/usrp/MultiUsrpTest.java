@@ -18,6 +18,7 @@ package org.anhonesteffort.uhd.usrp;
 
 import org.anhonesteffort.uhd.RxStreamer;
 import org.anhonesteffort.uhd.StreamArgs;
+import org.anhonesteffort.uhd.types.MetaRange;
 import org.anhonesteffort.uhd.types.StreamCommand;
 import org.anhonesteffort.uhd.types.TuneRequest;
 
@@ -107,7 +108,7 @@ public class MultiUsrpTest {
   }
 
   @Test
-  public void testRxRates() {
+  public void testSetGetRxRate() {
     final DeviceAddress ADDRESS = new DeviceAddress(DEVICE_ARGS);
     final MultiUsrp     USRP    = MultiUsrp.build(ADDRESS);
     final double        RATE0   = 1000000;
@@ -124,6 +125,17 @@ public class MultiUsrpTest {
 
     USRP.set_rx_rate(RATE1);
     assert Math.abs(USRP.get_rx_rate(0) - RATE1) < 0.0001;
+  }
+
+  @Test
+  public void testRxRates() {
+    final DeviceAddress ADDRESS = new DeviceAddress(DEVICE_ARGS);
+    final MultiUsrp     USRP    = MultiUsrp.build(ADDRESS);
+    final MetaRange     RATES   = USRP.get_rx_rates(0);
+
+    assert RATES.size() > 0;
+    assert RATES.get(0).start() > 0;
+    assert RATES.get(0).stop()  > 0;
   }
 
   @Test
