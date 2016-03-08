@@ -4,11 +4,16 @@ Java wrapper library for the [USRP Hardware Driver](http://code.ettus.com/redmin
 via [JavaCPP](https://github.com/bytedeco/javacpp).
 
 ## Install UHD
-Install UHD and the UHD development files on your system, for debian
-these can be found in the `uhd-host` and `libuhd-dev` packages. Check
-out [this guide](http://code.ettus.com/redmine/ettus/projects/uhd/wiki#Installation-Instructions)
+Install UHD and the UHD development files on your system, Check out
+[this guide](http://files.ettus.com/manual/page_install.html)
 for detailed install instructions. You may also need to install the
 `build-essential` & `libboost-dev` packages.
+
+```
+# add-apt-repository ppa:ettusresearch/uhd
+# apt-get update
+# apt-get install uhd-host build-essential libuhd-dev libboost-dev
+```
 
 ## Verify UHD
 Connect your USRP hardware and run `$ uhd_find_devices`, **you must
@@ -16,7 +21,7 @@ be able to do this without root permissions**. The output should look
 something like this:
 
 ```
-linux; GNU C++ version 4.8.2; Boost_105400; UHD_003.005.005-0-unknown
+linux; GNU C++ version 4.8.4; Boost_105400; UHD_003.009.002-release
 
 --------------------------------------------------
 -- UHD Device 0
