@@ -16,12 +16,10 @@
  */
 package org.anhonesteffort.uhd.usrp;
 
-import org.anhonesteffort.uhd.RxStreamer;
-import org.anhonesteffort.uhd.StreamArgs;
+import org.anhonesteffort.uhd.*;
 import org.anhonesteffort.uhd.types.MetaRange;
 import org.anhonesteffort.uhd.types.StreamCommand;
 import org.anhonesteffort.uhd.types.TuneRequest;
-import org.anhonesteffort.uhd.RxStreamerSharedPtr;
 import org.anhonesteffort.uhd.types.DeviceAddress;
 import org.anhonesteffort.uhd.types.SensorValue;
 import org.anhonesteffort.uhd.types.TuneResult;
@@ -121,4 +119,30 @@ public class MultiUsrp extends Pointer {
 
   public native @StdString String get_pp_string();
 
+  // TX related methods
+  private native @ByVal TxStreamerSharedPtr get_tx_stream(@ByRef StreamArgs args);
+
+  public TxStreamer getTxStream(StreamArgs args) {
+    TxStreamerSharedPtr ptr        = get_tx_stream(args);
+    TxStreamer          txStreamer = ptr.get();
+
+    txStreamer.saveReference(ptr);
+    return txStreamer;
+  }
+
+  public native double get_tx_freq(@Cast("size_t") long chan);
+  public native @ByVal TuneResult set_tx_freq(@ByRef TuneRequest tuneRequest, @Cast("size_t") long chan);
+
+  public native double get_tx_gain(@ByRef @StdString String name, @Cast("size_t") long chan);
+  public native double get_tx_gain(@Cast("size_t") long chan);
+  public native @ByVal StringVector get_tx_gain_names(@Cast("size_t") long chan);
+  public native void set_tx_gain(double gain, @ByRef @StdString String name, @Cast("size_t") long chan);
+  public native void set_tx_gain(double gain, @Cast("size_t") long chan);
+
+  public native void set_tx_antenna(@ByRef @StdString String ant, @Cast("size_t") long chan);
+  public native void set_tx_bandwidth(double bandwidth, @Cast("size_t") long chan);
+  public native void set_tx_rate(double rate, @Cast("size_t") long chan);
+  public void set_tx_rate(double rate) { set_tx_rate(rate, ALL_CHANS); }
+  public native double get_tx_rate(@Cast("size_t") long chan);
+  public native @ByVal MetaRange get_tx_rates(@Cast("size_t") long chan);
 }
