@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.anhonesteffort.uhd</groupId>
 	<artifactId>uhd-java</artifactId>
-	<version>3.9.0</version>
+	<version>3.9.1</version>
 
 	<properties>
 		<javacpp.jar>${org.bytedeco:javacpp:jar}</javacpp.jar> <!-- I complain though I shouldn't -->
