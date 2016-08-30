@@ -4,10 +4,10 @@ Java wrapper library for the [USRP Hardware Driver](http://code.ettus.com/redmin
 via [JavaCPP](https://github.com/bytedeco/javacpp).
 
 ## Install UHD
-Install UHD and the UHD development files on your system, Check out
-[this guide](http://files.ettus.com/manual/page_install.html)
-for detailed install instructions. You may also need to install the
-`build-essential` & `libboost-dev` packages.
+Install UHD (version `003.009.*`) and the UHD development files on your system, 
+Check out [this guide](http://files.ettus.com/manual/page_install.html) for 
+detailed install instructions. You may also need to install the `build-essential` 
+& `libboost-dev` packages.
 
 ```
 # add-apt-repository ppa:ettusresearch/uhd
