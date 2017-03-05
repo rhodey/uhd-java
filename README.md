@@ -21,7 +21,7 @@ If your USRP is a member of the "bus series" (has USB) you need to configure
 your operating system to mount it as readable by non-root users, on
 debian-based systems this can be done easily:
 ```
-$ cd <uhh-root-dir>
+$ cd <uhd-root-dir>
 $ sudo cp host/utils/uhd-usrp.rules /etc/udev/rules.d/10-uhd.rules
 $ sudo udevadm control --reload-rules
 $ sudo udevadm trigger
